@@ -5,26 +5,29 @@ namespace BasicOOPSConcepts
 {
     public class ObjectOrinatedPrograms
     {
+        string firstName = "Ramesh";
+        string lastName = "Suresh";
         
-        /// <summary>
-        /// This test method for training..
-        /// </summary>
-        /// <param name="args"></param>
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //string firstName = "Hello Kira Technology";
-            //string lastName = "Thank you";
+            Console.WriteLine("Hello Kira Technology");
+            //ObjectOrinatedPrograms obj = new ObjectOrinatedPrograms();
 
-            //Console.WriteLine("{0}This is my first program:-{1}", firstName, lastName);
-            ConstructorExample example = new ConstructorExample(20, 50);
-            example.PrintMethod();
+            ////Console.WriteLine("{0}This is my first program:-{1}", obj.firstName, obj.lastName);
+            ConstructorExample obj = new ConstructorExample(20, 50);
+            obj.strProperty = "New Property";
+            obj.PrintMethod();
+            
 
-            Console.WriteLine("Constructor example is pass:");
+            //Console.WriteLine("Constructor example is pass:");
+            AccessModifier accessModifier = new AccessModifier();
+            
             Console.ReadKey();
         }
     }
 
-    public class ConstructorExample
+    public class ConstructorExample : AccessModifier
     {
         #region variable
         string Employee;
@@ -40,15 +43,36 @@ namespace BasicOOPSConcepts
         public ConstructorExample(int a, int b)
         {
             Employee = "Suresh";
-            a = 20; b = 30;
             sum = a + b;
         }
 
-        public void PrintMethod()
+        #region objects
+        AccessModifier AccessModifierObject = new AccessModifier();
+        #endregion
+
+        internal void PrintMethod()
         {
             Console.WriteLine("Employee Name is:{0}",Employee);
             Console.WriteLine("Total is:{0}",sum);
+
+            AccessModifierObject.publicVariable = "Calling from print method";
+
+
+
+            Console.WriteLine(AccessModifierObject.publicVariable);
+
+            Console.WriteLine("this is my new property expample-{0}",strProperty);
         }
+
+        private string propVar;
+
+        public string strProperty
+        {
+            get { return propVar; }
+            set { propVar = value; }
+        }
+
+        public double GetNumberFromCalPrject { get; set; }
 
         #endregion
     }
